@@ -1,5 +1,5 @@
 <header id="navbar" role="banner" class="navbar navbar-fixed-top">
-  <meta property="wb:webmaster" content="dbb96f54b4239d9d" />
+<!--   <meta property="wb:webmaster" content="dbb96f54b4239d9d" /> -->
   <meta property="qc:admins" content="1540104037166727" />
   <div class="navbar-inner">
     <div class="container">

@@ -1,0 +1,4 @@
+name = Demo Add More
+description = A demo module to show add more in a form.
+core = 7.x
+package = Demo

@@ -18,6 +18,7 @@ function demo_add_more_menu() {
  * Form add more.
  */
 function demo_add_more_form($form, &$form_state) {
+  $form['#attributes']['class'][] = 'demo_add_more_form';
   $form['fieldset'] = array(
     '#type' => 'fieldset',
     '#title' => t('Favourite'),
@@ -38,31 +39,31 @@ function demo_add_more_form($form, &$form_state) {
     if (isset($form_state['storage']['remove_ids']) && in_array($i, $form_state['storage']['remove_ids'])) {
       continue;
     }
-  	$form['fieldset']['favourite'][$i] = array(
-	    '#prefix' => '<div class="container-inline">',
-	    '#suffix' => '</div>',
+    $form['fieldset']['favourite'][$i] = array(
+      '#prefix' => '<div class="container-inline favourite">',
+      '#suffix' => '</div><div class="clearfix"></div>',
       '#tree' => TRUE,
-  	);
+    );
     $form['fieldset']['favourite'][$i]['favourite'] = array(
       '#type' => 'textfield',
       '#title' => t('Favourite '.$i),
       '#size' => 20,
     );
     if ($real_num > 1) {
-  		$form['fieldset']['favourite'][$i]['remove'] = array(
-	      '#type' => 'submit',
+      $form['fieldset']['favourite'][$i]['remove'] = array(
+        '#type' => 'submit',
         '#name' => 'names_fieldset_name_remove'.$i, // important
-	      '#value' => t('Remove'),
-	      '#submit' => array('demo_add_more_form_remove_submit'),
-	      '#ajax' => array(
-	        'callback' => 'demo_add_more_form_ajax_callback',
-	        'wrapper' => 'fieldset_favourites_wrapper',
-	        'progress' => array(
-	        	'type' => 'throbber', // set 'none' can hide the throbber
-		        'message' => '',
-		      ), 
-	      ),
-  		);
+        '#value' => t('Remove'),
+        '#submit' => array('demo_add_more_form_remove_submit'),
+        '#ajax' => array(
+          'callback' => 'demo_add_more_form_ajax_callback',
+          'wrapper' => 'fieldset_favourites_wrapper',
+          'progress' => array(
+            'type' => 'throbber', // set 'none' can hide the throbber
+            'message' => '',
+          ), 
+        ),
+      );
     }
   }
   $form['fieldset']['add'] = array(
@@ -74,7 +75,7 @@ function demo_add_more_form($form, &$form_state) {
       'callback' => 'demo_add_more_form_ajax_callback',
       'wrapper' => 'fieldset_favourites_wrapper',
       'progress' => array(
-      	'type' => 'throbber',
+        'type' => 'throbber',
         'message' => '',
       ), 
     ),
@@ -84,6 +85,7 @@ function demo_add_more_form($form, &$form_state) {
     '#value' => t('Submit'),
   );
   $form['#submit'][] = 'demo_add_more_form_submit';
+  $form['#attached']['css'][] = drupal_get_path('module', 'demo_add_more_form').'/css/demo_add_more_form.css';
   return $form;
 }
 

@@ -85,7 +85,7 @@ function demo_add_more_form($form, &$form_state) {
     '#value' => t('Submit'),
   );
   $form['#submit'][] = 'demo_add_more_form_submit';
-  $form['#attached']['css'][] = drupal_get_path('module', 'demo_add_more_form').'/css/demo_add_more_form.css';
+  $form['#attached']['css'][] = drupal_get_path('module', 'demo_add_more').'/css/demo_add_more.css';
   return $form;
 }
 
